@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<table>
+    <tr>
+        <th>Id</th>
+        {% for rate in rates %}
+        <td>{{ rate.id }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>Type</th>
+        {% for rate in rates %}
+        <td>{{ rate.type }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>Source</th>
+        {% for rate in rates %}
+        <td>{{ rate.source }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>Created</th>
+        {% for rate in rates %}
+        <td>{{ rate.created }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>Sale</th>
+        {% for rate in rates %}
+        <td>{{ rate.sale }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>Buy</th>
+        {% for rate in rates %}
+        <td>{{ rate.buy }}</td>
+        {% endfor %}
+    </tr>
+</table>
+
+{% endblock content %}
+

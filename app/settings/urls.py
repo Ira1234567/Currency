@@ -18,6 +18,8 @@ from django.urls import path
 from currency import views as currency_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('contact-us/', currency_views.contact_us_list)
+    path('contact-us/', currency_views.contact_us_list),
+    path('rates/', currency_views.rate_list),
+    path('', currency_views.index)
 
 ]
