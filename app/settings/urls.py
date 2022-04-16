@@ -20,6 +20,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('contact-us/', currency_views.contact_us_list),
     path('rates/', currency_views.rate_list),
-    path('', currency_views.index)
+    path('', currency_views.index),
+    path('sources/', currency_views.source_list),
+    path('source/create/', currency_views.source_create),
+    path('source/update/<int:pk>/', currency_views.source_update),
+    path('source/delete/<int:pk>/', currency_views.source_delete)
 
 ]
