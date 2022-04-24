@@ -2,3 +2,4 @@ django
 django-extensions
 flake8
 ipython
+django-debug-toolbar

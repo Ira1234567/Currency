@@ -3,25 +3,25 @@
 <table>
     <tr>
         <th>Id</th>
-        {% for contact in contact_data %}
+        {% for contact in object_list %}
         <td>{{ contact.id }}</td>
         {% endfor %}
     </tr>
     <tr>
         <th>Email from</th>
-        {% for contact in contact_data %}
+        {% for contact in object_list %}
         <td>{{ contact.email_from }}</td>
         {% endfor %}
     </tr>
      <tr>
         <th>Subject</th>
-        {% for contact in contact_data %}
+        {% for contact in object_list %}
         <td>{{ contact.subject }}</td>
         {% endfor %}
     </tr>
      <tr>
         <th>Message</th>
-        {% for contact in contact_data %}
+        {% for contact in object_list %}
         <td>{{ contact.message }}</td>
         {% endfor %}
     </tr>

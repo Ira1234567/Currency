@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<a href="/source/create/">Create Source</a>
-    {% for source in sources %}
+<a href="{% url 'currency:source_create' %}">Create Source</a>
+    {% for source in object_list %}
     <p>
         {{ source.id }}
         Name = {{ source.name }}
@@ -9,8 +9,9 @@
         Founded = {{ source.founded }}
         Address = {{ source.address }}
         Contacts = {{ source.contacts }}
-        <a href="/source/update/{{ source.id }}/">Edit</a>
-        <a href="/source/delete/{{ source.id }}/">Delete</a>
+        <a href="{% url 'currency:source_update' source.id %}">Edit</a>
+        <a href="{% url 'currency:source_detail' source.id %}">Details</a>
+        <a href="{% url 'currency:source_delete' source.id %}">Delete</a>
     </p>
     <hr>
     {% endfor %}
