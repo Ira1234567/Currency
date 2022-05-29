@@ -1,6 +1,9 @@
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
-from currency.models import Contact_us, Source, Rate
+from currency.models import Source, Rate, Contact_us
 from currency.forms import SourceForm
+from django.urls import reverse_lazy
+from django.core.mail import send_mail
+from django.conf import settings
 
 class RateList(ListView):
     queryset = Rate.objects.all()
@@ -35,3 +38,32 @@ class SourceDelete(DeleteView):
     template_name = 'source_delete.html'
     success_url = '/currency/source_list/'
 
+class ContactUsCreateView(CreateView):
+    model = Contact_us
+    template_name = 'contact_us_create.html'
+    success_url = reverse_lazy('home')
+    fields = (
+        'name',
+        'reply_to',
+        'subject',
+        'body'
+    )
+    def _send_email(self):
+        subject = 'Contact_Us user'
+        body = f'''
+        Request From: {self.object.name}
+        Email to reply: {self.object.reply_to}
+        Subject: {self.object.subject}
+        Body: {self.object.body}
+        '''
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.DEFAULT_FROM_EMAIL],
+            fail_silently = False,
+        )
+    def form_valid(self, form):
+        redirect = super().form_valid(form)
+        self._send_email()
+        return redirect

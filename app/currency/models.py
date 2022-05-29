@@ -2,12 +2,6 @@
 from django.db import models
 
 
-class Contact_us(models.Model):
-    email_from = models.EmailField(max_length=40)
-    subject = models.CharField(max_length=50)
-    message = models.CharField(max_length=1000)
-
-
 class Rate(models.Model):
     type = models.CharField(max_length=5)
     source = models.CharField(max_length=50)
@@ -21,6 +15,13 @@ class Source(models.Model):
     founded = models.CharField(max_length=20)
     address = models.CharField(max_length=100)
     contacts = models.EmailField(max_length=40)
+
+class Contact_us(models.Model):
+    name = models.CharField(max_length=130)
+    reply_to = models.EmailField()
+    subject = models.CharField(max_length=130)
+    body = models.CharField(max_length=1500)
+    raw_content = models.TextField()
 
 
 
