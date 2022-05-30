@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if user.is_superuser %}
     <p>
         Do you want to delete Source with ID '{{ source.id }}'
     </p>
@@ -7,5 +8,8 @@
         {% csrf_token %}
         <button type="submit">Delete Source</button>
     </form>
+{% else %}
+        <h4>Not available</h4>
+{% endif %}
 
 {% endblock content %}

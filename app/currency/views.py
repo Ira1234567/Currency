@@ -4,6 +4,8 @@ from currency.forms import SourceForm
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 
 class RateList(ListView):
     queryset = Rate.objects.all()
@@ -23,17 +25,18 @@ class SourceCreate(CreateView):
     form_class = SourceForm
     success_url = '/currency/source_list/'
 
-class SourceUpdate(UpdateView):
+class SourceUpdate(UpdateView, LoginRequiredMixin):
     model = Source
     template_name = 'source_update.html'
     form_class = SourceForm
     success_url = '/currency/source_list/'
 
+
 class SourceDetail(DetailView):
     model = Source
     template_name = 'source_detail.html'
 
-class SourceDelete(DeleteView):
+class SourceDelete(DeleteView, LoginRequiredMixin):
     model = Source
     template_name = 'source_delete.html'
     success_url = '/currency/source_list/'
