@@ -7,22 +7,34 @@
         <td>{{ contact.id }}</td>
         {% endfor %}
     </tr>
+     <tr>
+        <th>Name</th>
+        {% for contact in object_list %}
+        <td>{{ contact.name }}</td>
+        {% endfor %}
+    </tr>
+     <tr>
+        <th>Reply_to</th>
+        {% for contact in object_list %}
+        <td>{{ contact.reply_to }}</td>
+        {% endfor %}
+    </tr>
     <tr>
-        <th>Email from</th>
+        <th>Subject/th>
         {% for contact in object_list %}
-        <td>{{ contact.email_from }}</td>
+        <td>{{ contact.subject}}</td>
         {% endfor %}
     </tr>
-     <tr>
-        <th>Subject</th>
+    <tr>
+        <th>Body</th>
         {% for contact in object_list %}
-        <td>{{ contact.subject }}</td>
+        <td>{{ contact.body }}</td>
         {% endfor %}
     </tr>
-     <tr>
-        <th>Message</th>
+    <tr>
+        <th>Raw_content</th>
         {% for contact in object_list %}
-        <td>{{ contact.message }}</td>
+        <td>{{ contact.raw_content }}</td>
         {% endfor %}
     </tr>
 </table>
