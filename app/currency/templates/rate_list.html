@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<a href="{% url 'currency:rate_create' %}">Create Rate</a>
 <table>
     <tr>
         <th>Id</th>
@@ -16,7 +17,7 @@
     <tr>
         <th>Source</th>
         {% for rate in rate_list %}
-        <td>{{ rate.source }}</td>
+        <td>{{ rate.source.name }}</td>
         {% endfor %}
     </tr>
     <tr>

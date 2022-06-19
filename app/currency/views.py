@@ -11,6 +11,15 @@ class RateList(ListView):
     queryset = Rate.objects.all()
     template_name = 'rate_list.html'
 
+class RateCreate(CreateView):
+    model = Rate
+    template_name = 'rate_create.html'
+    fields = ['type', 'buy', 'sale', 'source']
+    success_url = '/currency/rate_list/'
+
+    def __str__(self):
+        return self.name
+
 class SourceList(ListView):
     queryset = Source.objects.all()
     template_name = 'source_list.html'
